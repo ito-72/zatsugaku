@@ -1,8 +1,8 @@
 :root {
-    --primary-color: #ff9a9e;
-    --bg-color: #fff5f5;
+    --primary-color: #a2c2e8; /* 落ち着いたブルー */
+    --bg-color: #f0f7ff;      /* 薄い水色の背景 */
     --card-bg: #ffffff;
-    --text-color: #555;
+    --text-color: #445566;    /* 少しグレーがかった紺 */
 }
 
 body {

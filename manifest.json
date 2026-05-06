@@ -1,18 +1,19 @@
 {
-  "name": "雑学・営業アプリ",
-  "short_name": "雑学アプリ",
-  "start_url": "/",
+  "name": "ひとこと雑学",
+  "short_name": "雑学",
+  "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#fff5f5",
-  "theme_color": "#ff9a9e",
+  "background_color": "#f0f7ff", 
+  "theme_color": "#a2c2e8",
   "icons": [
     {
-      "src": "https://via.placeholder.com/192",
+      "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "https://via.placeholder.com/512",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

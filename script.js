@@ -18,7 +18,7 @@ async function init() {
         // データが空の場合のケア
         if (allData.trivia.length === 0 && allData.sales.length === 0) {
             document.getElementById('item-title').innerText = "データがありません";
-            document.getElementById('item-content').innerText = "スプレッドシートに内容を追加してね！";
+            document.getElementById('item-content').innerText = "スプレッドシートに内容を追加";
         } else {
             showRandomContent();
         }
@@ -35,8 +35,8 @@ async function init() {
 function showRandomContent() {
     const list = currentTab === 'trivia' ? allData.trivia : allData.sales;
     if (!list || list.length === 0) {
-        document.getElementById('item-title').innerText = "空っぽだよ";
-        document.getElementById('item-content').innerText = "書き込みタブから追加してみてね。";
+        document.getElementById('item-title').innerText = "空";
+        document.getElementById('item-content').innerText = "書き込みタブから追加";
         return;
     }
 
@@ -99,7 +99,7 @@ document.getElementById('submit-btn').addEventListener('click', async () => {
     const content = document.getElementById('post-content').value;
 
     if (!title || !content) {
-        alert("タイトルと内容を入力してね！");
+        alert("タイトルと内容を入力");
         return;
     }
 
@@ -118,7 +118,7 @@ document.getElementById('submit-btn').addEventListener('click', async () => {
         const result = await res.json();
 
         if (result.status === 'success') {
-            alert("登録できたよ！✨");
+            alert("登録完了");
             // フォームをクリア
             document.getElementById('post-title').value = "";
             document.getElementById('post-content').value = "";
@@ -129,7 +129,7 @@ document.getElementById('submit-btn').addEventListener('click', async () => {
         }
     } catch (e) {
         console.error("送信失敗:", e);
-        alert("送信に失敗しちゃいました。");
+        alert("送信に失敗");
     } finally {
         btn.innerText = originalText;
         btn.disabled = false;
