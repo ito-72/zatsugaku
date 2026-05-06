@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <!-- 華やかなローディング画面 -->
+    <!-- 起動時ローディング -->
     <div id="loading-screen">
         <div class="loader-content">
             <div class="sparkle-circle"></div>
@@ -16,11 +16,16 @@
         </div>
     </div>
 
+    <!-- 💡 追加：切り替え時のホワイトフラッシュ -->
+    <div id="flash-overlay"></div>
+
     <main id="app">
         <section id="view-page" class="page active">
             <h1 id="page-title">今日の雑学</h1>
             <div id="card-container">
-                <!-- カード自体にアニメーション用のクラスを付与 -->
+                <!-- 💡 パーティクルがここから飛び出す -->
+                <div id="particle-container"></div>
+                
                 <div id="trivia-card" class="card">
                     <h2 id="item-title"></h2>
                     <div class="card-divider"></div>
@@ -30,6 +35,7 @@
             </div>
         </section>
 
+        <!-- 書き込みページ -->
         <section id="write-page" class="page">
             <h1>新しく書き込む</h1>
             <div class="form-group">
@@ -52,18 +58,9 @@
     </main>
 
     <nav class="tab-bar">
-        <div class="tab-item active" data-target="trivia">
-            <span>💡</span>
-            <p>雑学</p>
-        </div>
-        <div class="tab-item" data-target="sales">
-            <span>💼</span>
-            <p>営業</p>
-        </div>
-        <div class="tab-item" data-target="write">
-            <span>✏️</span>
-            <p>書き込み</p>
-        </div>
+        <div class="tab-item active" data-target="trivia"><span>💡</span><p>雑学</p></div>
+        <div class="tab-item" data-target="sales"><span>💼</span><p>営業</p></div>
+        <div class="tab-item" data-target="write"><span>✏️</span><p>書き込み</p></div>
     </nav>
 
     <script src="script.js"></script>
