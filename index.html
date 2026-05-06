@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆるっと雑学・営業</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <main id="app">
+        <!-- 雑学・営業ページ共通（中身はJSで入れ替え） -->
+        <section id="view-page" class="page active">
+            <h1 id="page-title">今日の雑学</h1>
+            <div id="card-container">
+                <div id="trivia-card" class="card">
+                    <h2 id="item-title"></h2>
+                    <p id="item-content"></p>
+                </div>
+                <button id="next-btn" class="main-btn">他のを見る</button>
+            </div>
+        </section>
+
+        <!-- 書き込みページ -->
+        <section id="write-page" class="page">
+            <h1>新しく書き込む</h1>
+            <div class="form-group">
+                <label>種類</label>
+                <select id="post-type">
+                    <option value="雑学">雑学</option>
+                    <option value="営業">営業</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>タイトル</label>
+                <input type="text" id="post-title" placeholder="タイトルを入力...">
+            </div>
+            <div class="form-group">
+                <label>内容</label>
+                <textarea id="post-content" rows="5" placeholder="内容を入力..."></textarea>
+            </div>
+            <button id="submit-btn" class="main-btn">登録する！</button>
+        </section>
+    </main>
+
+    <!-- 下部タブバー -->
+    <nav class="tab-bar">
+        <div class="tab-item active" data-target="trivia">
+            <span>💡</span>
+            <p>雑学</p>
+        </div>
+        <div class="tab-item" data-target="sales">
+            <span>💼</span>
+            <p>営業</p>
+        </div>
+        <div class="tab-item" data-target="write">
+            <span>✏️</span>
+            <p>書き込み</p>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
