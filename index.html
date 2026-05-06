@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ひとこと雑学</title>
+    <title>豪華版・ひとこと雑学</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <!-- 起動時ローディング -->
     <div id="loading-screen">
         <div class="loader-content">
             <div class="sparkle-circle"></div>
-            <p>素敵な雑学を準備中...</p>
+            <p>最高の一言を準備中...</p>
         </div>
     </div>
 
-    <!-- 💡 追加：切り替え時のホワイトフラッシュ -->
+    <!-- 切り替えフラッシュ -->
     <div id="flash-overlay"></div>
 
     <main id="app">
         <section id="view-page" class="page active">
             <h1 id="page-title">今日の雑学</h1>
+            
             <div id="card-container">
-                <!-- 💡 パーティクルがここから飛び出す -->
+                <!-- 💡 画面全体にパーティクルを飛ばすためのコンテナ -->
                 <div id="particle-container"></div>
                 
                 <div id="trivia-card" class="card">
