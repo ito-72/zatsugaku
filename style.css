@@ -1,14 +1,17 @@
 :root {
-    --primary-color: #a2c2e8; /* 落ち着いたブルー */
-    --bg-color: #f0f7ff;      /* 薄い水色の背景 */
+    --primary-color: #a2c2e8;
+    --accent-color: #ffdeeb; /* 華やかさを出すピンク */
+    --bg-color: #f0f7ff;
     --card-bg: #ffffff;
-    --text-color: #445566;    /* 少しグレーがかった紺 */
+    --text-color: #445566;
 }
 
 body {
     margin: 0;
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: var(--bg-color);
+    background: linear-gradient(-45deg, #f0f7ff, #e6f0ff, #fff5f8, #f0f7ff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite; /* 背景がゆっくり動く */
     color: var(--text-color);
     display: flex;
     flex-direction: column;
@@ -16,91 +19,90 @@ body {
     overflow: hidden;
 }
 
-#app {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    padding-bottom: 80px; /* タブバーの分 */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-h1 { text-align: center; font-size: 1.5rem; margin-bottom: 20px; }
+/* ローディング画面 */
+#loading-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+    transition: opacity 0.8s ease;
+}
 
-/* ページ表示切り替え */
-.page { display: none; }
-.page.active { display: block; }
+.sparkle-circle {
+    width: 50px; height: 50px;
+    border: 3px solid var(--accent-color);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
 
-/* カードデザイン */
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* カードの華やかな登場アニメーション */
 .card {
     background: var(--card-bg);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
-    min-height: 200px;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(162, 194, 232, 0.2);
+    margin-bottom: 25px;
+    min-height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
 }
 
-/* 「じわっ」とアニメーション */
-.fade-in {
-    animation: fadeIn 1s ease forwards;
-    opacity: 0;
+/* 登場時のアニメーションクラス */
+.fancy-pop {
+    animation: fancyPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.delay { animation-delay: 0.8s; }
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes fancyPop {
+    0% { opacity: 0; transform: scale(0.8) translateY(30px) rotate(-3deg); }
+    100% { opacity: 1; transform: scale(1) translateY(0) rotate(0deg); }
 }
 
-/* ボタン */
+.card-divider {
+    width: 40px; height: 3px;
+    background: var(--primary-color);
+    margin: 15px 0;
+    border-radius: 2px;
+}
+
+#app { flex: 1; overflow-y: auto; padding: 20px 20px 80px; }
+
 .main-btn {
     width: 100%;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(255, 154, 158, 0.4);
+    background: linear-gradient(135deg, var(--primary-color), #89b2e0);
+    color: white; border: none; padding: 16px;
+    border-radius: 50px; font-weight: bold; cursor: pointer;
+    box-shadow: 0 6px 15px rgba(162, 194, 232, 0.4);
+    transition: transform 0.2s;
 }
 
-/* タブバー */
+.main-btn:active { transform: scale(0.98); }
+
 .tab-bar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 70px;
-    background: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    position: fixed; bottom: 0; width: 100%; height: 70px;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex; justify-content: space-around; align-items: center;
+    backdrop-filter: blur(10px);
 }
 
-.tab-item {
-    text-align: center;
-    color: #ccc;
-    cursor: pointer;
-}
-
+.tab-item { text-align: center; color: #bbb; }
 .tab-item.active { color: var(--primary-color); }
-.tab-item span { font-size: 1.5rem; }
-.tab-item p { margin: 0; font-size: 0.7rem; }
 
-/* フォーム */
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-input, textarea, select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-sizing: border-box;
-}
+.page { display: none; }
+.page.active { display: block; animation: fadeIn 0.4s ease; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
